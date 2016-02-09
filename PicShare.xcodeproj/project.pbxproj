@@ -864,6 +864,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = nektarlabs.PicShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/lib/backendless/include/Backendless-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -884,6 +885,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = nektarlabs.PicShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/lib/backendless/include/Backendless-Bridging-Header.h";
 			};
 			name = Release;
 		};
