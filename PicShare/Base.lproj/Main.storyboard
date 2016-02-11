@@ -131,12 +131,12 @@
                                 <exclude reference="Int-xA-4jZ"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="3kS-H5-6ao"/>
-                                <exclude reference="eOf-Ek-mjH"/>
-                                <exclude reference="maY-ND-N2b"/>
                                 <exclude reference="8YW-PK-Inj"/>
                                 <exclude reference="nUV-ot-A9L"/>
                                 <exclude reference="rMF-Zn-kcH"/>
+                                <exclude reference="3kS-H5-6ao"/>
+                                <exclude reference="eOf-Ek-mjH"/>
+                                <exclude reference="maY-ND-N2b"/>
                                 <exclude reference="Zfb-Mr-bPQ"/>
                                 <exclude reference="dcx-Bf-wQP"/>
                                 <exclude reference="Izo-gx-30q"/>
@@ -151,12 +151,12 @@
                                 <include reference="Int-xA-4jZ"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="3kS-H5-6ao"/>
-                                <include reference="eOf-Ek-mjH"/>
-                                <include reference="maY-ND-N2b"/>
                                 <include reference="8YW-PK-Inj"/>
                                 <include reference="nUV-ot-A9L"/>
                                 <include reference="rMF-Zn-kcH"/>
+                                <include reference="3kS-H5-6ao"/>
+                                <include reference="eOf-Ek-mjH"/>
+                                <include reference="maY-ND-N2b"/>
                                 <include reference="Zfb-Mr-bPQ"/>
                                 <include reference="dcx-Bf-wQP"/>
                                 <include reference="Izo-gx-30q"/>
@@ -255,6 +255,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hRG-li-fMk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cKf-Ux-P51">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

@@ -9,5 +9,8 @@
 import UIKit
 
 class Photo: NSObject {
-
+    var objectId: String?
+    var fileName: String?
+    var authorEmail: String?
+    var ownerId: String?
 }
