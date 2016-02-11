@@ -13,4 +13,15 @@ class Photo: NSObject {
     var fileName: String?
     var authorEmail: String?
     var ownerId: String?
+
+    // Initialize from arbitrary data
+    init(authorEmail: String, fileName: String) {
+        self.authorEmail = authorEmail
+        self.fileName = fileName
+        super.init()
+    }
+
+    override init() {
+        super.init()
+    }
 }
