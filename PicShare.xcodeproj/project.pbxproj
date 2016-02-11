@@ -27,6 +27,8 @@
 		93D52A5D1C6A51EC000621A7 /* MediaLibiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D52A431C6A51EC000621A7 /* MediaLibiOS.a */; };
 		93D52A5E1C6A51EC000621A7 /* libspeex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D52A4E1C6A51EC000621A7 /* libspeex.a */; };
 		93D52A5F1C6A51EC000621A7 /* libx264.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D52A541C6A51EC000621A7 /* libx264.a */; };
+		93D52A621C6A5BF6000621A7 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D52A611C6A5BF6000621A7 /* PhotoTableViewCell.swift */; };
+		93D52A651C6A5C3E000621A7 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D52A641C6A5C3E000621A7 /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -223,6 +225,8 @@
 		93D52A511C6A51EC000621A7 /* x264.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x264.h; sourceTree = "<group>"; };
 		93D52A521C6A51EC000621A7 /* x264_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x264_config.h; sourceTree = "<group>"; };
 		93D52A541C6A51EC000621A7 /* libx264.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libx264.a; sourceTree = "<group>"; };
+		93D52A611C6A5BF6000621A7 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
+		93D52A641C6A5C3E000621A7 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,8 +275,10 @@
 			isa = PBXGroup;
 			children = (
 				93D5296D1C6A418C000621A7 /* AppDelegate.swift */,
-				93D529811C6A4B75000621A7 /* Controllers */,
 				93D529711C6A418C000621A7 /* Main.storyboard */,
+				93D52A661C6A5C42000621A7 /* Model */,
+				93D529811C6A4B75000621A7 /* Controllers */,
+				93D52A631C6A5BFD000621A7 /* Cells */,
 				93D529741C6A418C000621A7 /* Assets.xcassets */,
 				93D529761C6A418C000621A7 /* LaunchScreen.storyboard */,
 				93D529791C6A418C000621A7 /* Info.plist */,
@@ -665,6 +671,22 @@
 			name = Backendless;
 			sourceTree = "<group>";
 		};
+		93D52A631C6A5BFD000621A7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				93D52A611C6A5BF6000621A7 /* PhotoTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		93D52A661C6A5C42000621A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				93D52A641C6A5C3E000621A7 /* Photo.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -736,9 +758,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93D52A621C6A5BF6000621A7 /* PhotoTableViewCell.swift in Sources */,
 				93D529801C6A4B66000621A7 /* LoginViewController.swift in Sources */,
 				93D529701C6A418C000621A7 /* FeedViewController.swift in Sources */,
 				93D5296E1C6A418C000621A7 /* AppDelegate.swift in Sources */,
+				93D52A651C6A5C3E000621A7 /* Photo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,6 +932,7 @@
 				93D5297E1C6A418C000621A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
