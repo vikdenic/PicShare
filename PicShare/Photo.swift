@@ -13,6 +13,7 @@ class Photo: NSObject {
     var fileName: String?
     var authorEmail: String?
     var ownerId: String?
+    var created: NSDate?
 
     // Initialize from arbitrary data
     init(authorEmail: String, fileName: String) {

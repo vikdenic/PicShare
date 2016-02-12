@@ -62,7 +62,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UIScreen.mainScreen().bounds.width
+        return UIScreen.mainScreen().bounds.width + 80
     }
 }
 
