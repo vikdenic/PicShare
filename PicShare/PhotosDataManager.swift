@@ -13,16 +13,16 @@ class PhotosDataManager {
 
     static let sharedManager = PhotosDataManager()
 
-    let photoCache = AutoPurgingImageCache(
+    let imageCache = AutoPurgingImageCache(
         memoryCapacity: 100 * 1024 * 1024,
         preferredMemoryUsageAfterPurge: 60 * 1024 * 1024
     )
 
     func cacheImage(photo: Photo, image: Image) {
-        photoCache.addImage(image, withIdentifier: photo.objectId!)
+        imageCache.addImage(image, withIdentifier: photo.objectId!)
     }
 
     func cachedImage(photo: Photo) -> Image? {
-        return photoCache.imageWithIdentifier(photo.objectId!)
+        return imageCache.imageWithIdentifier(photo.objectId!)
     }
 }

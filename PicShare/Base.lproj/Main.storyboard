@@ -221,7 +221,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="3mo-B2-ImP" secondAttribute="trailing" constant="-20" id="ReZ-Uk-Jqc"/>
-                            <constraint firstItem="3mo-B2-ImP" firstAttribute="top" secondItem="YMg-Ji-ekj" secondAttribute="bottom" constant="-44" id="cs0-Ye-Jgs"/>
+                            <constraint firstItem="3mo-B2-ImP" firstAttribute="top" secondItem="YMg-Ji-ekj" secondAttribute="bottom" constant="-44" id="cs0-Ye-Jgs">
+                                <variation key="widthClass=compact" constant="-64"/>
+                            </constraint>
                             <constraint firstItem="3mo-B2-ImP" firstAttribute="leading" secondItem="D7z-we-6uh" secondAttribute="leadingMargin" constant="-20" id="p7L-9m-pv5"/>
                             <constraint firstItem="3mo-B2-ImP" firstAttribute="bottom" secondItem="D7z-we-6uh" secondAttribute="bottomMargin" id="xgA-oy-hCI"/>
                         </constraints>

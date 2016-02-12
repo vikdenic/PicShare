@@ -27,7 +27,14 @@ class FeedViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        retrievePhotos()
+        Photo.retrieveAllPhotos { (photos, fault) -> Void in
+            guard let photos = photos else {
+                print("Server reported an error: \(fault)")
+                return
+            }
+            self.photos = photos
+            self.tableView.reloadData()
+        }
     }
 
     func checkForCurrentUser() {
@@ -36,20 +43,6 @@ class FeedViewController: UIViewController {
             performSegueWithIdentifier("feedToLoginSegue", sender: self)
         } else {
             print("Current user is: \(Backendless().userService.currentUser)")
-        }
-    }
-
-    func retrievePhotos() {
-        let query = BackendlessDataQuery()
-        // Use backendless.persistenceService to obtain a ref to a data store for the class
-
-        let dataStore = self.backendless.persistenceService.of(Photo.ofClass()) as IDataStore
-        dataStore.find(query, response: { (retrievedCollection) -> Void in
-            print("Successfully retrieved: \(retrievedCollection)")
-            self.photos = retrievedCollection.data as! [Photo]
-            self.tableView.reloadData()
-            }) { (fault) -> Void in
-                print("Server reported an error: \(fault)")
         }
     }
 }
