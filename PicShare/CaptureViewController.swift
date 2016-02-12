@@ -40,17 +40,19 @@ extension CaptureViewController: UIImagePickerControllerDelegate, UINavigationCo
         let fileName = "img/\(NSUUID().UUIDString).jpeg"
         backendless.fileService.upload(fileName, content: UIImageJPEGRepresentation(image, 0.5), response: { (uploadedFile) -> Void in
 
-                let photo = Photo(authorEmail: self.backendless.userService.currentUser.email, fileName: uploadedFile.fileURL)
+            let photo = Photo(authorEmail: self.backendless.userService.currentUser.email, fileName: uploadedFile.fileURL)
 
-                self.backendless.persistenceService.of(Photo.ofClass()).save(photo, response: { (savedPhoto) -> Void in
-                        print("successfully saved photo: \(savedPhoto)")
-                        self.tabBarController?.selectedIndex = 0
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    }) { (fault) -> Void in
-                        print("Server reported an error: \(fault)")
-                        self.tabBarController?.selectedIndex = 0
-                        self.dismissViewControllerAnimated(true, completion: nil)
+            photo.save({ (success, fault) -> Void in
+                if fault != nil {
+                    //TODO: SHOW ALERT
+                    self.tabBarController?.selectedIndex = 0
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    self.tabBarController?.selectedIndex = 0
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
+            })
+
             }) { (fault) -> Void in
                 print("Server reported an error: \(fault)")
                 self.tabBarController?.selectedIndex = 0

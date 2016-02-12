@@ -24,7 +24,7 @@ class PhotoTableViewCell: UITableViewCell {
         self.photo = photo
         self.authorLabel.text = photo.authorEmail
         self.timeLabel.text = photo.created?.toAbbrevString()
-        self.likesLabel.text = "💙 100"
+        self.likesLabel.text = "💙 \(photo.likesCount)"
 
         reset()
 
@@ -62,7 +62,15 @@ class PhotoTableViewCell: UITableViewCell {
     }
 
     func onImageViewDoubleTapped() {
-        print("tapped: \(self)")
+        photo.likesCount += 1
+        photo.save { (success, fault) -> Void in
+            if fault != nil {
+                
+            } else {
+                print("successfully saved photo with added like")
+                self.configure(self.photo)
+            }
+        }
     }
 }
 

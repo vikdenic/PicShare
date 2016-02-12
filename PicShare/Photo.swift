@@ -12,6 +12,7 @@ class Photo: NSObject {
     var objectId: String?
     var fileName: String?
     var authorEmail: String?
+    var likesCount = 0 as Int
     var ownerId: String?
     var created: NSDate?
 
@@ -38,6 +39,22 @@ class Photo: NSObject {
         }) { (fault) -> Void in
             print("Server reported an error: \(fault)")
             completed(photos: nil, fault: fault)
+        }
+    }
+
+    func save(completed : (success : Bool, fault : Fault!) -> Void) {
+        let backendless = Backendless.sharedInstance()
+
+        backendless.persistenceService.of(Photo.ofClass()).save(self, response: { (savedPhoto) -> Void in
+            print("successfully saved photo: \(savedPhoto)")
+            completed(success: true, fault: nil)
+//            self.tabBarController?.selectedIndex = 0
+//            self.dismissViewControllerAnimated(true, completion: nil)
+            }) { (fault) -> Void in
+                print("Server reported an error: \(fault)")
+                completed(success: false, fault: fault)
+//                self.tabBarController?.selectedIndex = 0
+//                self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }
