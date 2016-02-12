@@ -7,16 +7,27 @@
 //
 
 import UIKit
+import Alamofire
 
 class FeedViewController: UIViewController {
 
     var backendless = Backendless.sharedInstance()
 
     var photos = [Photo]()
+    var images = [UIImage]()
+
+    @IBOutlet var tableView: UITableView!
+
+    let imageCache = NSCache()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         checkForCurrentUser()
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        retrievePhotos()
     }
 
     func checkForCurrentUser() {
@@ -25,6 +36,32 @@ class FeedViewController: UIViewController {
             performSegueWithIdentifier("feedToLoginSegue", sender: self)
         } else {
             print("Current user is: \(Backendless().userService.currentUser)")
+        }
+    }
+
+    func retrievePhotos() {
+        let query = BackendlessDataQuery()
+        // Use backendless.persistenceService to obtain a ref to a data store for the class
+
+        let dataStore = self.backendless.persistenceService.of(Photo.ofClass()) as IDataStore
+        dataStore.find(query, response: { (retrievedCollection) -> Void in
+            print("Successfully retrieved: \(retrievedCollection)")
+            self.photos = retrievedCollection.data as! [Photo]
+
+            self.storeImages()
+            }) { (fault) -> Void in
+                print("Server reported an error: \(fault)")
+        }
+    }
+
+    func storeImages() {
+        for photo in photos {
+            Alamofire.request(.GET, photo.fileName!).validate().response { (_, _, data, error) -> Void in
+                if error == nil {
+                    let image = UIImage(data: data!)
+                    self.images.append(image!)
+                }
+            }
         }
     }
 }
@@ -36,10 +73,10 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("feedCell")! as UITableViewCell
-//        let photo = self.photos[indexPath.row]
-//        cell.textLabel?.text = blurb.message
-//        cell.detailTextLabel?.text = blurb.authorEmail
+        let cell = tableView.dequeueReusableCellWithIdentifier("photoCell")! as! PhotoTableViewCell
+
+        cell.photoImageView.image = self.images[indexPath.row]
+
         return cell
     }
 }

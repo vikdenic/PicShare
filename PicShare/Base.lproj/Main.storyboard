@@ -185,60 +185,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="320" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4iE-I4-iBh">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="260" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3mo-B2-ImP">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="photoCell" rowHeight="320" id="Vq5-HB-kMU">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="photoCell" rowHeight="320" id="PF4-78-aeq" customClass="PhotoTableViewCell" customModule="PicShare" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="320"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vq5-HB-kMU" id="WO1-s7-d4b">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="319"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PF4-78-aeq" id="i4o-ui-2Cd">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="319"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R0b-qz-Bci">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="319"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="R0b-qz-Bci" firstAttribute="leading" secondItem="i4o-ui-2Cd" secondAttribute="leadingMargin" constant="-8" id="Afb-pQ-p5o"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="R0b-qz-Bci" secondAttribute="bottom" constant="-8" id="Yaj-je-wTL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="R0b-qz-Bci" secondAttribute="trailing" constant="-8" id="jmg-Du-lhm"/>
+                                                <constraint firstItem="R0b-qz-Bci" firstAttribute="top" secondItem="i4o-ui-2Cd" secondAttribute="topMargin" constant="-8" id="rLP-Vq-Gv6"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="photoImageView" destination="R0b-qz-Bci" id="fDi-iW-6kH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="400" height="600"/>
-                                </variation>
                                 <connections>
-                                    <outlet property="dataSource" destination="KDj-t7-mmG" id="pIb-mM-42u"/>
-                                    <outlet property="delegate" destination="KDj-t7-mmG" id="1Tp-is-hSG"/>
+                                    <outlet property="dataSource" destination="KDj-t7-mmG" id="VGQ-Ec-ijD"/>
+                                    <outlet property="delegate" destination="KDj-t7-mmG" id="DZb-8P-OQ5"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4iE-I4-iBh" firstAttribute="leading" secondItem="D7z-we-6uh" secondAttribute="leadingMargin" constant="-20" id="RdK-fu-GmA"/>
-                            <constraint firstItem="drc-Cs-0ZI" firstAttribute="top" secondItem="4iE-I4-iBh" secondAttribute="bottom" id="T5v-Wk-4sr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="4iE-I4-iBh" secondAttribute="trailing" constant="-20" id="YZo-75-HvD"/>
-                            <constraint firstItem="4iE-I4-iBh" firstAttribute="top" secondItem="D7z-we-6uh" secondAttribute="topMargin" id="oBy-Rq-2Tk"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3mo-B2-ImP" secondAttribute="trailing" constant="-20" id="ReZ-Uk-Jqc"/>
+                            <constraint firstItem="3mo-B2-ImP" firstAttribute="top" secondItem="YMg-Ji-ekj" secondAttribute="bottom" constant="-44" id="cs0-Ye-Jgs"/>
+                            <constraint firstItem="3mo-B2-ImP" firstAttribute="leading" secondItem="D7z-we-6uh" secondAttribute="leadingMargin" constant="-20" id="p7L-9m-pv5"/>
+                            <constraint firstItem="3mo-B2-ImP" firstAttribute="bottom" secondItem="D7z-we-6uh" secondAttribute="bottomMargin" id="xgA-oy-hCI"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="4iE-I4-iBh"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="T5v-Wk-4sr"/>
-                                <exclude reference="RdK-fu-GmA"/>
-                                <exclude reference="YZo-75-HvD"/>
-                                <exclude reference="oBy-Rq-2Tk"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="4iE-I4-iBh"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="T5v-Wk-4sr"/>
-                                <include reference="RdK-fu-GmA"/>
-                                <include reference="YZo-75-HvD"/>
-                                <include reference="oBy-Rq-2Tk"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="fpP-2A-rcC"/>
                     <connections>
+                        <outlet property="tableView" destination="3mo-B2-ImP" id="pw0-UE-fTf"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="feedToLoginSegue" id="7T6-h0-jXs"/>
                     </connections>
                 </viewController>
