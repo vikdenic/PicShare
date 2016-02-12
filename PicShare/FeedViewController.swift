@@ -8,13 +8,13 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 
 class FeedViewController: UIViewController {
 
     var backendless = Backendless.sharedInstance()
 
     var photos = [Photo]()
-    var images = [UIImage]()
 
     @IBOutlet var tableView: UITableView!
 
@@ -47,21 +47,9 @@ class FeedViewController: UIViewController {
         dataStore.find(query, response: { (retrievedCollection) -> Void in
             print("Successfully retrieved: \(retrievedCollection)")
             self.photos = retrievedCollection.data as! [Photo]
-
-            self.storeImages()
+            self.tableView.reloadData()
             }) { (fault) -> Void in
                 print("Server reported an error: \(fault)")
-        }
-    }
-
-    func storeImages() {
-        for photo in photos {
-            Alamofire.request(.GET, photo.fileName!).validate().response { (_, _, data, error) -> Void in
-                if error == nil {
-                    let image = UIImage(data: data!)
-                    self.images.append(image!)
-                }
-            }
         }
     }
 }
@@ -75,9 +63,13 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("photoCell")! as! PhotoTableViewCell
 
-        cell.photoImageView.image = self.images[indexPath.row]
+        cell.configure(photos[indexPath.row])
 
         return cell
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print(photos[(tableView.indexPathForSelectedRow?.row)!])
     }
 }
 

@@ -7,20 +7,42 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class PhotoTableViewCell: UITableViewCell {
 
     @IBOutlet var photoImageView: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var request: Request?
+    var photo: Photo!
+
+    func configure(photo: Photo) {
+        self.photo = photo
+        reset()
+        if let image = PhotosDataManager.sharedManager.cachedImage(photo) {
+            populateCell(image)
+            return
+        }
+        loadImage()
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    func reset() {
+        photoImageView.image = nil
+        request?.cancel()
+    }
+
+    func loadImage() {
+        Alamofire.request(.GET, photo.fileName!).responseImage { (response) -> Void in
+            guard let image = response.result.value else { return }
+            self.populateCell(image)
+            PhotosDataManager.sharedManager.cacheImage(self.photo, image: image)
+        }
+    }
+
+    func populateCell(image: UIImage) {
+        photoImageView.image = image
     }
 
 }
