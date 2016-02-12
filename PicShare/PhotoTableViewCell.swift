@@ -27,11 +27,13 @@ class PhotoTableViewCell: UITableViewCell {
         self.likesLabel.text = "💙 100"
 
         reset()
-        if let image = PhotosDataManager.sharedManager.cachedImage(photo) {
-            populateCell(image)
+
+        guard let image = PhotosDataManager.sharedManager.cachedImage(photo) else {
+            loadImage()
             return
         }
-        loadImage()
+
+        populateCell(image)
     }
 
     func reset() {
@@ -49,6 +51,18 @@ class PhotoTableViewCell: UITableViewCell {
 
     func populateCell(image: UIImage) {
         photoImageView.image = image
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        let imageViewDoubleTap = UITapGestureRecognizer(target: self, action: "onImageViewDoubleTapped")
+        imageViewDoubleTap.numberOfTapsRequired = 2
+        self.photoImageView.addGestureRecognizer(imageViewDoubleTap)
+    }
+
+    func onImageViewDoubleTapped() {
+        print("tapped: \(self)")
     }
 }
 
